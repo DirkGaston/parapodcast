@@ -1,0 +1,25 @@
+@import "base/typography";
+@import "components/buttons";
+@import "components/cards";
+@import "layout/navigation";
+@import "layout/footer";
+@import "pages/home";
+@import "pages/register";
+
+body {
+  background-image: url("../assets/2217435.jpg");
+  background-size: cover;
+  animation: space_anim 500s linear infinite;
+}
+
+@keyframes space_anim {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -3840px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

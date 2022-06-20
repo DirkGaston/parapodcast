@@ -1,0 +1,29 @@
+.card {
+  background: rgba(16, 16, 16, 0.3) !important;
+  backdrop-filter: blur(8px);
+  font-family: "Space Mono", monospace;
+  border-radius: 10px;
+}
+
+.card_Aside {
+  background: rgba(235, 216, 216, 0.3) !important;
+  backdrop-filter: blur(8px);
+  font-family: "Space Mono", monospace;
+  border-radius: 10px;
+}
+
+.card_Subtitle {
+  font-family: "Space Mono", monospace;
+}
+
+.card_Subtitle span {
+  color: #005ef3;
+  font-weight: 700;
+}
+
+.custom-caption {
+  text-align: center;
+  padding: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}

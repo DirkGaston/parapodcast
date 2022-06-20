@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Jaapokki Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Jaapokki Regular"),
+      url("./fonts/Jaapokki-Regular.woff") format("woff");
+  }
+  
+  @font-face {
+    font-family: "Jaapokki enchance Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Jaapokki enchance Regular"),
+      url("./fonts/Jaapokkienchance-Regular.woff") format("woff");
+  }
+  
+  @font-face {
+    font-family: "Jaapokki subtract Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Jaapokki subtract Regular"),
+      url("./fonts/Jaapokkisubtract-Regular.woff") format("woff");
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
