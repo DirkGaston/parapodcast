@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-center flex">
-    <q-card class="my-card q-px-xl col-6 card q-mr-md">
+    <q-card class="my-card q-px-xl col-12 col-md-6 card q-mr-md">
       <h4 style="margin: 25px" class="text-white">1ª TEMPORADA</h4>
       <q-separator class="q-mb-md" color="red" />
       <vueper-slides
@@ -62,7 +62,7 @@
         >
       </vueper-slides>
     </q-card>
-    <q-card class="my-card q-pa-md col-3 card_Aside">
+    <q-card class="my-card q-pa-md col-12 col-md-3 card_Aside">
       <h4 class="text-white text-center">NUESTRAS REDES</h4>
       <q-separator class="q-mb-md" color="red" />
       <h5 class="text-white">TWITTER PARAPODCAST</h5>

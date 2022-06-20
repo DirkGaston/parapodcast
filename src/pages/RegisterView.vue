@@ -1,7 +1,7 @@
 <template>
   <q-page class="row justify-center q-mt-md">
-    <div class="col-3 q-mr-md">
-      <img
+    <div class="gt-md col-md-3 q-mr-md">
+      <img 
         id="group_Photo"
         style="height: 700px"
         src="../assets/3 arbol logo.jpg"
@@ -9,7 +9,7 @@
       />
     </div>
 
-    <q-card class="my-card q-pa-xl col-4 card" style="height: 700px">
+    <q-card class="my-card q-pa-xl col-md-4 card" style="height: 700px">
       <q-card-section>
         <div class="text-h4 q-pb-md text-white">Crea tu cuenta</div>
         <div class="text-subtitle1 text-grey-5">

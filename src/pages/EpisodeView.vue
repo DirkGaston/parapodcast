@@ -26,7 +26,6 @@
           rounded
           color="positive"
           label="Marcar Visto"
-          @click="episodeSeen"
         />
       </q-card-section>
     </q-card>
