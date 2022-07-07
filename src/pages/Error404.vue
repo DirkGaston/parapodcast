@@ -15,16 +15,3 @@ export default {
   name: "ErrorNotFound",
 };
 </script>
-
-<style>
-.phoneHome {
-  background-image: url(../assets/73e71c2d-3a27-4078-b491-1f36b2f52687.jpg);
-}
-
-.glow {
-  width: 70px;
-  position: absolute;
-  right: 520px;
-  top: 190px;
-}
-</style>

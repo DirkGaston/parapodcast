@@ -4,56 +4,44 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { name: "home", path: "", component: () => import("pages/HomeView.vue") },
-    ],
-  },
-  {
-    path: "/login",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
       {
         name: "login",
-        path: "",
+        path: "/login",
         component: () => import("pages/LoginView.vue"),
       },
-    ],
-  },
-  {
-    path: "/register",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
       {
         name: "register",
-        path: "",
+        path: "/register",
         component: () => import("pages/RegisterView.vue"),
       },
-    ],
-  },
-  {
-    path: "/episode/:id",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
       {
         name: "episode",
-        path: "",
+        path: "/episode/:id",
         component: () => import("pages/EpisodeView.vue"),
       },
-    ],
-  },
-  {
-    path: "/profile/:id",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
       {
         name: "profile",
-        path: "",
+        path: "/profile/:id",
         component: () => import("pages/UserView.vue"),
       },
+      {
+        name: "admin",
+        path: "/admin",
+        component: () => import("pages/AdminView.vue"),
+        meta: {
+          auth: true,
+        },
+      },
+      {
+        name: "edit",
+        path: "/edit/:id",
+        component: () => import("pages/EditView.vue"),
+        meta: {
+          auth: true,
+        },
+      },
+      { path: "/*", component: () => import("pages/Error404.vue") },
     ],
-  },
-  {
-    path: "/*",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/Error404.vue") }],
   },
 ];
 

@@ -1,15 +1,15 @@
 <template>
   <q-page class="row justify-center q-mt-md">
     <div class="gt-md col-md-3 q-mr-md">
-      <img 
+      <img
         id="group_Photo"
-        style="height: 700px"
+        style="height: 80vh"
         src="../assets/3 arbol logo.jpg"
         alt="the_band"
       />
     </div>
 
-    <q-card class="my-card q-pa-xl col-md-4 card" style="height: 700px">
+    <q-card class="my-card q-pa-xl col-md-4 card">
       <q-card-section>
         <div class="text-h4 q-pb-md text-white">Crea tu cuenta</div>
         <div class="text-subtitle1 text-grey-5">
@@ -127,15 +127,15 @@
             @click="resetInput"
           />
         </q-card-section>
+        <q-card-section class="flex flex-center card_Subtitle q-pt-md">
+          <p class="text-body1 text-grey-5">
+            ¿Ya tienes cuenta?
+            <router-link style="text-decoration: none" to="/login">
+              <span style="text-decoration: none">Entra</span>
+            </router-link>
+          </p>
+        </q-card-section>
       </q-form>
-      <q-card-section class="flex flex-center card_Subtitle q-pt-md">
-        <p class="text-body1 text-grey-5">
-          ¿Ya tienes cuenta?
-          <router-link style="text-decoration: none" to="/login">
-            <span style="text-decoration: none">Entra</span>
-          </router-link>
-        </p>
-      </q-card-section>
     </q-card>
   </q-page>
 </template>

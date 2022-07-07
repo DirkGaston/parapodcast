@@ -33,18 +33,5 @@ export default {
 </script>
 
 <style>
-.homePage {
-  font-family: "Space Mono", monospace;
-}
 
-.divider {
-  background-color: #101010;
-  opacity: 0.7;
-  width: 100vw;
-}
-
-.ufo {
-  position: absolute;
-  left: 300px;
-}
 </style>

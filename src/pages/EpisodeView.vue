@@ -7,9 +7,22 @@
           Episodio: {{ episode.nombre }}
         </div>
       </q-card-section>
-      <q-card-section>
-        <img style="width: 500px" :src="episode.imgSrc" alt="foto" />
+      <q-card-section class="flex justify-center">
+        <img style="width: 250px" :src="episode.imgSrc" alt="foto" />
       </q-card-section>
+      <q-card-section>
+        {{ episode.desc }}
+      </q-card-section>
+
+      <iframe
+        style="border-radius: 12px"
+        :src="`${episode.src}`"
+        width="100%"
+        height="232"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
 
       <q-card-section class="flex flex-center">
         <q-btn
@@ -33,21 +46,23 @@
 </template>
 
 <script>
-import episodes from "../episodes.json";
 export default {
   name: "EpisodeView",
   data() {
     return {
-      episodes,
+      episode: {},
     };
   },
-  computed: {
-    episode() {
-      const { episodes } = this;
-      const { id } = this.$route.params;
-      const episode = episodes.find((u) => u.id == id);
-      return episode;
-    },
+  created() {
+    console.log(this.$route.params);
+
+    fetch("/episodes.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const { id } = this.$route.params;
+        this.episode = data.find((u) => u.id == id);
+      })
+      .catch((e) => console.log(e));
   },
 };
 </script>

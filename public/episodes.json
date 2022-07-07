@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1x01",
+    "nombre": "POVNIs y el Elixir del Amor",
+    "imgSrc": "./assets/Episodio1x01.jpeg",
+    "src": "https://open.spotify.com/embed/episode/4ocpxA4y8aI4wJGw1nW7pP?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x02",
+    "nombre": "Ouiya y Juguetes del Edén",
+    "imgSrc": "./assets/Episodio1x02.jpeg",
+    "src": "https://open.spotify.com/embed/episode/25RE82nKqq6AZ9fC4AxpQe?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x03",
+    "nombre": "Desapariciones y un Váter",
+    "imgSrc": "./assets/Episodio1x03.jpeg",
+    "src": "https://open.spotify.com/embed/episode/2k7UIS3zrX0mCwi8OF260S?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x04",
+    "nombre": "Psicofonías y Demonios Educados",
+    "imgSrc": "./assets/Episodio1x04.jpeg",
+    "src": "https://open.spotify.com/embed/episode/0qh60OB1p8Tun92U7nfuRe?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x05",
+    "nombre": "Virus y Seres de Luz",
+    "imgSrc": "./assets/Episodio1x05.jpeg",
+    "src": "https://open.spotify.com/embed/episode/1huHqNZ5q9K3jYYKwHwhbP?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x06",
+    "nombre": "Granjas y Refugios Zombie",
+    "imgSrc": "./assets/Episodio1x06.jpeg",
+    "src": "https://open.spotify.com/embed/episode/4wzjds4cuB2zF9GME1Htad?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x07",
+    "nombre": "Sex Tape y Pedro Sánchez",
+    "imgSrc": "./assets/Episodio1x07.jpeg",
+    "src": "https://open.spotify.com/embed/episode/6tPuP6f9Z5jDInG0HcQaK3?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "1x08",
+    "nombre": "Especial FIN DEL MUNDO",
+    "imgSrc": "./assets/Episodio1x08.jpeg",
+    "src": "https://open.spotify.com/embed/episode/6mJMXMLGMifzxUFdeqULzg?utm_source=generator",
+    "season": "1",
+    "comments": ""
+  },
+  {
+    "id": "2x01",
+    "nombre": "Conspiraciones y Despedidas",
+    "imgSrc": "./assets/Episodio2x01.jpeg",
+    "src": "https://open.spotify.com/embed/episode/4U7pO7IXMiZ4JiNwVVXAUl?utm_source=generator",
+    "season": "2",
+    "comments": ""
+  },
+  {
+    "id": "2x02",
+    "nombre": "Armarios y Pueblos Anormales",
+    "imgSrc": "./assets/Episodio2x02.jpeg",
+    "src": "https://open.spotify.com/embed/episode/6gzbt7yYaG56oaqDOrzV5Q?utm_source=generator",
+    "season": "2",
+    "comments": ""
+  },
+  {
+    "id": "2x03",
+    "nombre": "Especial FELIZ NAVIDALIEN",
+    "imgSrc": "./assets/Episodio2x03.jpeg",
+    "src": "https://open.spotify.com/embed/episode/0vK6XxxmOavMDhb0FGb7yR?utm_source=generator",
+    "season": "2",
+    "comments": ""
+  }
+]

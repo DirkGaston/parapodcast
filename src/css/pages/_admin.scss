@@ -1,0 +1,35 @@
+.adminPage {
+  font-family: "Space Mono", monospace;
+}
+
+.adminTable {
+  background: rgba(16, 16, 16, 0.5) !important;
+  backdrop-filter: blur(8px);
+}
+
+.editIcon {
+  font-size: 18px;
+  color: #005ef3;
+  margin-right: 18px;
+}
+
+.deleteIcon {
+  font-size: 18px;
+  color: red;
+}
+
+.iconContainer {
+  display: flex;
+}
+
+.addCard {
+  background: rgba(48, 51, 219, 0.801) !important;
+  backdrop-filter: blur(8px);
+  font-family: "Space Mono", monospace;
+}
+
+.editTable {
+  background: rgba(247, 241, 241, 0.5) !important;
+  backdrop-filter: blur(8px);
+  color: white;
+}

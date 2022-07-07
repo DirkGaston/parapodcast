@@ -13,63 +13,67 @@
             PARAPODCAST ACTIVITY
           </q-toolbar-title>
 
-          <router-link style="text-decoration: none" to="/episodes">
-            <q-btn
-              class="q-px-md q-mx-md transparent navBtn gt-sm"
-              unelevated
-              rounded
-              color="secondary"
-              label="Episodios"
-              v-if="user"
-            />
-          </router-link>
-          <router-link style="text-decoration: none" to="/news">
-            <q-btn
-              class="q-px-md q-mx-md transparent navBtn gt-sm"
-              unelevated
-              rounded
-              color="secondary"
-              label="Noticias"
-              v-if="user"
-            />
-          </router-link>
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            unelevated
+            rounded
+            color="secondary"
+            label="Administración"
+            v-if="user"
+            :to="`/admin`"
+          />
+
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            unelevated
+            rounded
+            color="secondary"
+            label="Noticias"
+            v-if="user"
+            :to="`/news`"
+          />
+
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn"
+            unelevated
+            rounded
+            color="secondary"
+            label="Contacto"
+            v-if="user"
+            :to="`/contact`"
+          />
 
           <q-space />
-          <router-link style="text-decoration: none" to="/login">
-            <q-btn
-              class="q-px-md q-mx-md transparent navBtn gt-sm"
-              unelevated
-              rounded
-              color="secondary"
-              label="Login"
-              v-if="!user"
-            />
-          </router-link>
-          <router-link style="text-decoration: none" to="/register">
-            <q-btn
-              class="q-px-md q-mx-md transparent navBtn gt-sm"
-              unelevated
-              rounded
-              color="secondary"
-              label="Registro"
-              v-if="!user"
-            />
-          </router-link>
-          <router-link
-            style="text-decoration: none"
-            class="gt-sm"
-            :to="`/profile/${user.uid}`"
+
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            unelevated
+            rounded
+            color="secondary"
+            label="Login"
+            v-if="!user"
+            :to="`/login`"
+          />
+
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            unelevated
+            rounded
+            color="secondary"
+            label="Registro"
+            v-if="!user"
+            :to="`/register`"
+          />
+
+          <q-btn
+            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            unelevated
+            rounded
+            color="secondary"
+            :label="user.email"
             v-if="user !== null"
-          >
-            <q-btn
-              class="q-px-md q-mx-md transparent navBtn gt-sm"
-              unelevated
-              rounded
-              color="secondary"
-              :label="user.email"
-              v-if="user !== null"
-            />
-          </router-link>
+            :to="`/profile/${user.uid}`"
+          />
           <q-icon
             name="logout"
             class="text-h6 q-mx-md gt-sm"
@@ -91,13 +95,13 @@
     </q-header>
 
     <q-drawer v-model="left" side="left" bordered content-class="bg-black">
-      <router-link style="text-decoration: none" to="/episodes">
+      <router-link style="text-decoration: none" to="/parapedia">
         <q-btn
           class="q-px-md q-mx-md q-mt-md transparent navBtn"
           unelevated
           rounded
           color="secondary"
-          label="Episodios"
+          label="La Parapedia"
           v-if="user"
         />
       </router-link>
@@ -108,6 +112,16 @@
           rounded
           color="secondary"
           label="Noticias"
+          v-if="user"
+        />
+      </router-link>
+      <router-link style="text-decoration: none" to="/contact">
+        <q-btn
+          class="q-px-md q-mx-md transparent navBtn"
+          unelevated
+          rounded
+          color="secondary"
+          label="Contacto"
           v-if="user"
         />
       </router-link>

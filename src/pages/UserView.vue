@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center column">
+  <q-page class="flex flex-center column" v-if="user">
     <q-card class="my-card q-pa-xl card">
       <q-card-section>
         <div class="text-h4 q-pb-md text-white">USUARIO: {{ user.email }}</div>
