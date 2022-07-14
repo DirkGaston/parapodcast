@@ -68,8 +68,13 @@
             color="negative"
             label="Reset"
             type="reset"
-            @click="resetInput"
+            @click="resetForm"
           />
+        </q-card-section>
+        <q-card-section>
+          <p class="passwordReset" @click="resetPassword">
+            ¿Has olvidado tu contraseña?
+          </p>
         </q-card-section>
       </q-form>
       <q-card-section class="flex flex-center card_Subtitle q-pt-md">
@@ -88,7 +93,10 @@
 
 <script>
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "@firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "@firebase/auth";
 
 export default {
   data() {
@@ -113,9 +121,19 @@ export default {
         });
       console.log(userCredential);
     },
-    resetInput() {
-      this.email = "";
-      this.password = "";
+    resetPassword() {
+      sendPasswordResetEmail(auth, this.user.email)
+        .then(() => {
+          alert("Password reset email sent!");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(error);
+        });
+    },
+    resetForm() {
+      this.$refs.formLogin.reset();
     },
   },
 };

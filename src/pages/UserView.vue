@@ -1,8 +1,12 @@
 <template>
-  <q-page class="flex flex-center column" v-if="user">
-    <q-card class="my-card q-pa-xl card">
-      <q-card-section>
-        <div class="text-h4 q-pb-md text-white">USUARIO: {{ user.email }}</div>
+  <q-page v-if="userData">
+    <q-card class="my-card q-pa-xl card flex flex-center column col-5">
+      <q-card-section class="flex column">
+        <div class="text-h4 q-pb-md text-white text-center">
+          Hola {{ userData.displayName }} <br /><br />
+          Este es tu perfil en nuestro rincón del Misterio
+        </div>
+        <img class="col-5" :src="userData.photoURL" alt="" />
       </q-card-section>
 
       <q-card-section class="flex flex-center">
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 export default {
@@ -30,8 +35,28 @@ export default {
   },
   beforeCreate() {
     onAuthStateChanged(auth, (user) => {
-      this.user = user;
+      if (user) {
+        this.user = user;
+      }
     });
+  },
+  methods: {
+    ...mapActions(["get_users"]),
+  },
+
+  computed: {
+    ...mapState(["users"]),
+
+    userData() {
+      const { users } = this;
+      const { id } = this.$route.params;
+      return users.find((u) => u.uid == id);
+    },
+  },
+
+  created() {
+    this.get_users();
+    console.log(this.users);
   },
 };
 </script>

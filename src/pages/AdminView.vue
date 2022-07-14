@@ -54,7 +54,7 @@
 
               <q-input
                 filled
-                v-model="episode.name"
+                v-model="episode.title"
                 label="Título del Episodio"
                 lazy-rules
                 :rules="[(val) => (val && val.length > 0) || 'Introduce algo']"
@@ -78,6 +78,14 @@
 
               <q-input
                 filled
+                v-model="episode.desc"
+                label="Descripción del Episodio"
+                lazy-rules
+                :rules="[(val) => (val && val.length > 0) || 'Introduce algo']"
+              />
+
+              <q-input
+                filled
                 v-model="episode.season"
                 label="Temporada"
                 lazy-rules
@@ -85,7 +93,7 @@
               />
             </q-form>
           </q-card-section>
-          <q-card-section>
+          <q-card-section class="flex row adminButtons">
             <q-btn
               class="q-mx-md"
               :disabled="!valid"
@@ -123,9 +131,10 @@ export default {
     return {
       episode: {
         id: "",
-        name: "",
+        title: "",
         imgSrc: "",
         src: "",
+        desc: "",
         season: "",
         comments: [],
       },
@@ -167,6 +176,7 @@ export default {
       idEdit: "",
     };
   },
+
   methods: {
     ...mapActions([
       "add_episode",

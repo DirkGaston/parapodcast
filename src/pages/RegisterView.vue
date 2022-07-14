@@ -24,19 +24,33 @@
             dark
             outlined
             placeholder="Nombre"
-            v-model="user.name"
+            v-model="user.displayName"
             required
             :rules="[(val) => (val && val.length > 0) || 'Escribe algo...']"
           >
             <template v-slot:append> </template>
           </q-input>
+
           <q-input
             color="secondary"
             class="q-mb-md input"
             dark
             outlined
-            placeholder="Apellido"
-            v-model="user.lastName"
+            placeholder="Bio"
+            v-model="user.bio"
+            required
+            :rules="[(val) => (val && val.length > 0) || 'Escribe algo...']"
+          >
+            <template v-slot:append> </template>
+          </q-input>
+
+          <q-input
+            color="secondary"
+            class="q-mb-md input"
+            dark
+            outlined
+            placeholder="URL Foto"
+            v-model="user.photoURL"
             required
             :rules="[(val) => (val && val.length > 0) || 'Escribe algo...']"
           >
@@ -124,7 +138,7 @@
             color="negative"
             type="reset"
             label="Reset"
-            @click="resetInput"
+            @click="formReset"
           />
         </q-card-section>
         <q-card-section class="flex flex-center card_Subtitle q-pt-md">
@@ -141,16 +155,20 @@
 </template>
 
 <script>
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { mapActions } from "vuex";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
 
 export default {
   data() {
     return {
       valid: false,
       user: {
-        name: "",
-        lastName: "",
+        displayName: "",
+        bio: "",
+        id: "",
+        photoURL: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -159,6 +177,8 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["add_user"]),
+
     async registerUser() {
       try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -167,7 +187,18 @@ export default {
           this.user.password
         );
         console.log(userCredential);
-        this.$router.push({ name: "login" });
+        updateProfile(auth.currentUser, {
+          displayName: this.user.displayName,
+          photoURL: this.user.photoURL,
+        });
+        await setDoc(doc(db, "users", auth.currentUser.uid), {
+          displayName: this.user.displayName,
+          bio: this.user.bio,
+          uid: auth.currentUser.uid,
+          photoURL: this.user.photoURL,
+          email: this.user.email,
+        });
+        this.$router.push({ name: "home" });
       } catch (error) {
         console.log(error.code);
         switch (error.code) {
@@ -177,12 +208,8 @@ export default {
         }
       }
     },
-    resetInput() {
-      this.name = "";
-      this.lastName = "";
-      this.email = "";
-      this.password = "";
-      this.confirmPassword = "";
+    formReset() {
+      this.$refs.formRegister.reset();
     },
   },
 };

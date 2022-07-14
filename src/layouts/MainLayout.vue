@@ -70,7 +70,7 @@
             unelevated
             rounded
             color="secondary"
-            :label="user.email"
+            :label="`Hola ${user.displayName}`"
             v-if="user !== null"
             :to="`/profile/${user.uid}`"
           />

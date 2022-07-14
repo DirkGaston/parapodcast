@@ -16,22 +16,34 @@
         Zombrano y Elvira Siller
       </p>
     </div>
-
-    <EpisodeList />
+    <div class="row justify-center flex">
+      <q-card class="my-card q-px-xl col-12 col-md-6 card q-mr-md">
+        <EpisodeList />
+        <APINasaSection />
+      </q-card>
+      <q-card class="my-card q-pa-md col-12 col-md-3 card_Aside">
+        <HomeAside />
+      </q-card>
+    </div>
   </q-page>
 </template>
 
 <script>
 import EpisodeList from "../components/EpisodeList.vue";
+import HomeAside from "../components/HomeAside.vue";
+import APINasaSection from "../components/APINasaSection.vue";
+import { Timeline } from "vue-tweet-embed";
+
 export default {
   name: "Home",
 
   components: {
     EpisodeList,
+    Timeline,
+    HomeAside,
+    APINasaSection,
   },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

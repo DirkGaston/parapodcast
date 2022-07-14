@@ -25,6 +25,14 @@
 
         <q-input
           filled
+          v-model="episode.desc"
+          label="Descripción del Episodio"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Introduce algo']"
+        />
+
+        <q-input
+          filled
           v-model="episode.imgSrc"
           label="URL de la imágen de portada"
           lazy-rules
@@ -70,6 +78,7 @@ export default {
       episode: {
         id: "",
         name: "",
+        desc: "",
         imgSrc: "",
         src: "",
         season: "",

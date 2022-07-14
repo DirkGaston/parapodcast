@@ -1,11 +1,16 @@
 @import "base/typography";
+
 @import "components/buttons";
 @import "components/cards";
+
 @import "layout/navigation";
 @import "layout/footer";
+
 @import "pages/404";
 @import "pages/admin";
+@import "pages/edit";
 @import "pages/home";
+@import "pages/login";
 @import "pages/register";
 
 body {

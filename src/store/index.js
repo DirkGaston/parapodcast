@@ -7,15 +7,18 @@ import {
   doc,
   onSnapshot,
   query,
+  orderBy,
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import { isReactNative } from "@firebase/util";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     episodes: [],
+    users: [],
   },
   getters: {
     season1Eps(state) {
@@ -29,11 +32,14 @@ export default new Vuex.Store({
     GET_EPISODES(state, payload) {
       state.episodes = payload;
     },
+    GET_USERS(state, payload) {
+      state.users = payload;
+    },
   },
   actions: {
     async get_episodes({ commit }) {
       try {
-        const q = query(collection(db, "episodes"));
+        const q = query(collection(db, "episodes"), orderBy("id"));
         onSnapshot(q, (querySnapshot) => {
           const episodes = [];
           querySnapshot.forEach((doc) => {
@@ -44,7 +50,29 @@ export default new Vuex.Store({
           });
           commit("GET_EPISODES", episodes);
         });
-      } catch (error) {}
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+
+    async get_users({ commit }) {
+      try {
+        const q = query(collection(db, "users"));
+        onSnapshot(q, (querySnapshot) => {
+          const users = [];
+          querySnapshot.forEach((doc) => {
+            users.push({
+              did: doc.id,
+              ...doc.data(),
+            });
+          });
+          commit("GET_USERS", users);
+        });
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
     },
 
     async add_episode({ commit }, episode) {
@@ -54,8 +82,20 @@ export default new Vuex.Store({
           name: episode.name,
           imgSrc: episode.imgSrc,
           src: episode.src,
+          desc: episode.desc,
           season: episode.season,
           comments: episode.comments,
+        });
+      } catch (error) {}
+    },
+    async add_user({ commit }, user) {
+      try {
+        await addDoc(collection(db, "users"), {
+          displayName: user.displayName,
+          bio: user.bio,
+          id: user.id,
+          photoURL: user.photoURL,
+          email: user.email,
         });
       } catch (error) {}
     },
