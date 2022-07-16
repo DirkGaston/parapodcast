@@ -63,6 +63,14 @@
         >
           ACTUALIZAR EPISODIO</q-btn
         >
+        <q-btn
+          class="q-mr-4"
+          color="negative"
+          :disabled="!valid"
+          @click="reset"
+        >
+          RESET</q-btn
+        >
       </q-form>
     </div>
   </q-page>

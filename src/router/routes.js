@@ -44,16 +44,6 @@ const routes = [
         },
       },
       {
-        name: "episodesrt",
-        path: "episodesrt",
-        component: () => import("pages/EpisodesRTView.vue"),
-      },
-      {
-        name: "episodert",
-        path: "episodesrt/:id",
-        component: () => import("pages/EpisodeRTView.vue"),
-      },
-      {
         name: "edit",
         path: "edit/:id",
         component: () => import("pages/EditView.vue"),

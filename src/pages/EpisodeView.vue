@@ -58,7 +58,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import { auth, db } from "../firebase";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, getDoc, doc } from "firebase/firestore";
 
 export default {
   name: "EpisodeView",
@@ -75,14 +75,40 @@ export default {
     async listenedEpisode() {
       try {
         const docRef = doc(db, "users", auth.currentUser.uid);
-        await updateDoc(docRef, {
-          episodes: [
-            {
-              listened: false,
-              id: this.$route.params.id,
-            },
-          ],
-        });
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+
+          const episodeUpdate = { listened: true, id: this.$route.params.id };
+          let episodesUpdate;
+
+          // console.log("docSnap.data()", docSnap.data());
+
+          if (docSnap.data().episodes) {
+            const findEpisode = docSnap
+              .data()
+              .episodes.find((item) => item.id === this.$route.params.id);
+            if (findEpisode) {
+              episodesUpdate = docSnap
+                .data()
+                .episodes.map((item) =>
+                  item.id === this.$route.params.id ? episodeUpdate : item
+                );
+            } else {
+              episodesUpdate.push(episodeUpdate);
+            }
+          } else {
+            episodesUpdate = [episodeUpdate];
+          }
+
+          await updateDoc(docRef, {
+            episodes: episodesUpdate,
+          });
+          console.log("db actualizada");
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
       } catch (error) {
         console.log(error);
       }
