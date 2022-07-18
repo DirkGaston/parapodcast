@@ -33,6 +33,7 @@
   animation: fadeAndScale 2s;
   animation-delay: -0.2s;
   transform-origin: center bottom;
+  margin-bottom: -5px;
 }
 
 .divider {
@@ -47,5 +48,5 @@
   position: absolute;
   left: 300px;
   animation: ufoFlyin 5s;
-  width: 15%
+  width: 15%;
 }

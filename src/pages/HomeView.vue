@@ -1,27 +1,27 @@
 <template>
   <q-page class="homePage" style="min-height: 480px">
-    <header style="height: 480px">
+    <header>
       <img
-        style="height: 480px; max-width: 100%"
+        style="max-width: 100%"
         src="../assets/finalbanner.png"
         alt="parapodcast"
         class="headerImg"
       />
       <img class="ufo" src="../assets/ufo.gif" alt="ufo" />
+      <div class="divider">
+        <p class="text-white text-h6 q-pa-sm flex flex-center">
+          Podcast de investigación de hechos paranormales presentado por Roberto
+          Zombrano y Elvira Siller
+        </p>
+      </div>
     </header>
 
-    <div class="divider">
-      <p class="text-white text-h6 q-pa-sm flex flex-center">
-        Podcast de investigación de hechos paranormales presentado por Roberto
-        Zombrano y Elvira Siller
-      </p>
-    </div>
     <div class="row justify-center flex">
       <q-card class="my-card q-px-xl col-12 col-md-6 card q-mr-md">
         <EpisodeList />
         <APINasaSection />
       </q-card>
-      <q-card class="my-card q-pa-md col-12 col-md-3 card_Aside">
+      <q-card class="my-card q-pa-md col-11 col-md-3 card_Aside">
         <HomeAside />
       </q-card>
     </div>

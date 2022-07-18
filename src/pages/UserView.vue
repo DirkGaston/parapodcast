@@ -1,13 +1,24 @@
 <template>
-  <q-page v-if="userData">
-    <q-card class="my-card q-pa-xl card flex flex-center column col-5">
-      <q-card-section class="flex column">
-        <div class="text-h4 q-pb-md text-white text-center">
-          Hola {{ userData.displayName }} <br /><br />
+  <q-page class="flex flex-center column" v-if="userData">
+    <q-card class="my-card q-pa-xl card">
+      <q-card-section>
+        <div class="text-h4 q-pb-md text-white">
+          Hola {{ userData.displayName }}
+        </div>
+        <div class="text-h5 q-pb-md text-white">
           Este es tu perfil en nuestro rincón del Misterio
         </div>
-        <img class="col-5" :src="userData.photoURL" alt="" />
-        <p>{{ userData.bio }}</p>
+        <q-card-section class="flex justify-center row">
+          <img
+            class="col-12 col-md-4 q-mb-md"
+            :src="userData.photoURL"
+            alt="foto"
+          />
+          <p
+            v-html="userData.bio"
+            class="col-12 col-md-6 q-ml-xl text-white episodeDescription"
+          ></p>
+        </q-card-section>
       </q-card-section>
 
       <div class="q-pa-md">

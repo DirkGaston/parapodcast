@@ -12,6 +12,7 @@
       <q-card-section class="flex justify-center row">
         <img
           class="col-12 col-md-4 q-mb-md"
+          style="max-width: 100%"
           :src="episodeData.imgSrc"
           alt="foto"
         />
@@ -59,6 +60,7 @@
 import { mapState, mapActions } from "vuex";
 import { auth, db } from "../firebase";
 import { updateDoc, getDoc, doc } from "firebase/firestore";
+import CustomDialog from "../components/CustomDialog.vue";
 
 export default {
   name: "EpisodeView",
@@ -85,6 +87,11 @@ export default {
             name: this.episodeData.name,
             season: this.episodeData.season,
           };
+
+          const episodeRatingUpdate = {
+            rating: this.rating,
+          };
+
           let episodesUpdate;
 
           const episodes = docSnap.data().episodes;
@@ -106,7 +113,15 @@ export default {
           await updateDoc(docRef, {
             episodes: episodesUpdate,
           });
-          console.log("db actualizada");
+          this.$q
+            .dialog({
+              component: CustomDialog,
+              title: "Prompt",
+              message: "¡Esperamos que lo hayas disfrutado!",
+            })
+            .onOk((data) => {
+              console.log(this.rating);
+            });
         } else {
           console.log("No such document!");
         }

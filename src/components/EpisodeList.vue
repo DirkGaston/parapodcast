@@ -8,7 +8,7 @@
       :gap="3"
       :slide-ratio="1 / 3"
       :dragging-distance="200"
-      :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
+      :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2, slideRatio: 1 / 2 } }"
     >
       <vueper-slide
         v-for="(i, index) in season1eps"
@@ -39,7 +39,7 @@
       :gap="3"
       :slide-ratio="1 / 3"
       :dragging-distance="200"
-      :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
+      :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2, slideRatio: 1 / 2 } }"
     >
       <vueper-slide
         v-for="(i, index) in season2eps"

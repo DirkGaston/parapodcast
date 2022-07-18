@@ -79,7 +79,7 @@ export default new Vuex.Store({
       try {
         await addDoc(collection(db, "episodes"), {
           id: episode.id,
-          name: episode.name,
+          title: episode.title,
           imgSrc: episode.imgSrc,
           src: episode.src,
           desc: episode.desc,

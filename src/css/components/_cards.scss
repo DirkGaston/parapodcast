@@ -5,6 +5,15 @@
   border-radius: 10px;
 }
 
+.custom-dialog {
+  background: rgba(224, 222, 222, 0.2) !important;
+  backdrop-filter: blur(8px);
+  font-family: "Space Mono", monospace;
+  border-radius: 10px;
+  color: white;
+  width: 50vw
+}
+
 .card_Aside {
   background: rgba(235, 216, 216, 0.3) !important;
   backdrop-filter: blur(8px);

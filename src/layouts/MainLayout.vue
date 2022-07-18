@@ -12,61 +12,57 @@
           <q-toolbar-title class="navbar_Title">
             PARAPODCAST ACTIVITY
           </q-toolbar-title>
-
-          <q-btn
-            class="q-px-md q-mx-md transparent navBtn gt-sm"
-            unelevated
-            rounded
-            color="secondary"
-            label="Administración"
-            v-if="user"
-            :to="`/admin`"
-          />
-
-          <q-btn
-            class="q-px-md q-mx-md transparent navBtn gt-sm"
-            unelevated
-            rounded
-            color="secondary"
-            label="Noticias"
-            v-if="user"
-            :to="`/news`"
-          />
-
-          <q-btn
-            class="q-px-md q-mx-md transparent navBtn"
-            unelevated
-            rounded
-            color="secondary"
-            label="Contacto"
-            v-if="user"
-            :to="`/contact`"
-          />
+          <router-link style="text-decoration: none" to="/admin">
+            <q-btn
+              class="q-px-md q-mx-md transparent navBtn gt-sm"
+              unelevated
+              rounded
+              color="secondary"
+              label="Administración"
+              v-if="user"
+          /></router-link>
+          <router-link style="text-decoration: none" to="`/news`"
+            ><q-btn
+              class="q-px-md q-mx-md transparent navBtn gt-sm"
+              unelevated
+              rounded
+              color="secondary"
+              label="Noticias"
+              v-if="user"
+          /></router-link>
+          <router-link style="text-decoration: none" to="`/contact`">
+            <q-btn
+              class="q-px-md q-mx-md transparent navBtn gt-sm"
+              unelevated
+              rounded
+              color="secondary"
+              label="Contacto"
+              v-if="user"
+          /></router-link>
 
           <q-space />
 
-          <q-btn
-            class="q-px-md q-mx-md transparent navBtn gt-sm"
-            unelevated
-            rounded
-            color="secondary"
-            label="Login"
-            v-if="!user"
-            :to="`/login`"
-          />
+          <router-link style="text-decoration: none" to="`/login`">
+            <q-btn
+              class="q-px-md q-mx-md transparent navBtn"
+              unelevated
+              rounded
+              color="secondary"
+              label="Login"
+              v-if="!user"
+          /></router-link>
+          <router-link style="text-decoration: none" to="`/register`">
+            <q-btn
+              class="q-px-md q-mx-md transparent navBtn"
+              unelevated
+              rounded
+              color="secondary"
+              label="Registro"
+              v-if="!user"
+          /></router-link>
 
           <q-btn
-            class="q-px-md q-mx-md transparent navBtn gt-sm"
-            unelevated
-            rounded
-            color="secondary"
-            label="Registro"
-            v-if="!user"
-            :to="`/register`"
-          />
-
-          <q-btn
-            class="q-px-md q-mx-md transparent navBtn gt-sm"
+            class="q-px-md q-mx-md transparent navBtn"
             unelevated
             rounded
             color="secondary"
@@ -74,12 +70,14 @@
             v-if="user !== null"
             :to="`/profile/${user.uid}`"
           />
+
           <q-icon
             name="logout"
-            class="text-h6 q-mx-md gt-sm"
+            class="text-h6 q-mx-md logoutIcon"
             v-if="user !== null"
             @click="logOut"
           />
+
           <div class="lt-md">
             <q-btn
               flat
@@ -91,23 +89,25 @@
             ></q-btn>
           </div>
         </q-toolbar>
+        <!-- <NavBar /> -->
       </div>
     </q-header>
 
     <q-drawer v-model="left" side="left" bordered content-class="bg-black">
-      <router-link style="text-decoration: none" to="/parapedia">
+      <router-link style="text-decoration: none" to="/admin">
         <q-btn
-          class="q-px-md q-mx-md q-mt-md transparent navBtn"
+          class="q-pa-md q-mt-xl q-mx-md transparent navBtn"
           unelevated
           rounded
           color="secondary"
-          label="La Parapedia"
+          label="Administración"
           v-if="user"
+          :to="`/admin`"
         />
       </router-link>
       <router-link style="text-decoration: none" to="/news">
         <q-btn
-          class="q-px-md q-mx-md transparent navBtn"
+          class="q-pa-md q-mx-md transparent navBtn"
           unelevated
           rounded
           color="secondary"
@@ -117,7 +117,7 @@
       </router-link>
       <router-link style="text-decoration: none" to="/contact">
         <q-btn
-          class="q-px-md q-mx-md transparent navBtn"
+          class="q-pa-md q-mx-md transparent navBtn"
           unelevated
           rounded
           color="secondary"
@@ -125,50 +125,8 @@
           v-if="user"
         />
       </router-link>
-      <router-link style="text-decoration: none" to="/login">
-        <q-btn
-          class="q-px-md q-mx-md transparent navBtn"
-          unelevated
-          rounded
-          color="secondary"
-          label="Login"
-          v-if="!user"
-        />
-      </router-link>
-      <router-link style="text-decoration: none" to="/register">
-        <q-btn
-          class="q-px-md q-mx-md transparent navBtn"
-          unelevated
-          rounded
-          color="secondary"
-          label="Registro"
-          v-if="!user"
-        />
-      </router-link>
-      <router-link
-        style="text-decoration: none"
-        :to="`/profile/${user.uid}`"
-        v-if="user !== null"
-      >
-        <q-btn
-          class="q-px-md q-mx-md transparent navBtn"
-          unelevated
-          rounded
-          color="secondary"
-          :label="user.email"
-          v-if="user !== null"
-        />
-      </router-link>
-      <router-link style="text-decoration: none" to="/news">
-        <q-icon
-          name="logout"
-          class="text-h6 q-mx-md q-mt-md q-pl-xl text-white"
-          v-if="user !== null"
-          @click="logOut"
-        />
-      </router-link>
     </q-drawer>
-
+    <!-- <MobileNavBar /> -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -180,12 +138,17 @@
         >
       </q-toolbar>
     </q-footer>
+    <!-- <Footer /> -->
   </q-layout>
 </template>
 
 <script>
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import NavBar from "../components/MainLayout/NavBar.vue";
+import MobileNavBar from "../components/MainLayout/MobileNavBar.vue";
+import Footer from "../components/MainLayout/Footer.vue";
+
 export default {
   data() {
     return {
@@ -197,6 +160,11 @@ export default {
     onAuthStateChanged(auth, (user) => {
       this.user = user;
     });
+  },
+  components: {
+    NavBar,
+    MobileNavBar,
+    Footer,
   },
   methods: {
     async logOut() {

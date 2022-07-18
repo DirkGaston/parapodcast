@@ -38,7 +38,7 @@
         </div>
       </template>
       <q-dialog v-model="dialog" class="addDialog">
-        <q-card class="my-card addCard">
+        <q-card class="my-card custom-dialog">
           <q-card-section>
             <span class="text-h6">Agregando un Episodio</span>
           </q-card-section>
@@ -46,6 +46,8 @@
             <q-form ref="formAdd" v-model="valid">
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.id"
                 label="Número de Episodio"
                 lazy-rules
@@ -54,6 +56,8 @@
 
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.title"
                 label="Título del Episodio"
                 lazy-rules
@@ -62,6 +66,8 @@
 
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.imgSrc"
                 label="URL de la imágen de portada"
                 lazy-rules
@@ -70,6 +76,8 @@
 
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.src"
                 label="Enlace de escucha del Episodio"
                 lazy-rules
@@ -78,6 +86,8 @@
 
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.desc"
                 label="Descripción del Episodio"
                 lazy-rules
@@ -86,14 +96,17 @@
 
               <q-input
                 filled
+                input-class="text-white"
+                label-color="white"
                 v-model="episode.season"
+                v-on:keyup.enter="addEpisode"
                 label="Temporada"
                 lazy-rules
                 :rules="[(val) => (val && val.length > 0) || 'Introduce algo']"
               />
             </q-form>
           </q-card-section>
-          <q-card-section class="flex row adminButtons">
+          <q-card-section class="flex row adminButtons justify-center">
             <q-btn
               class="q-mx-md"
               :disabled="!valid"
@@ -101,21 +114,12 @@
               @click="addEpisode"
               >AGREGAR</q-btn
             >
-            <q-btn color="red-7" class="mr-4" @click="reset"
-              >LIMPIAR FORMULARIO</q-btn
-            >
-          </q-card-section>
-        </q-card>
-      </q-dialog>
-      <q-dialog v-model="dialogDelete">
-        <q-card>
-          <q-card-section>
-            <h5>¿Estás seguro de que quieres eliminar este episodio?</h5>
-          </q-card-section>
-
-          <q-card-section>
-            <q-btn color="red-7" @click="deleteEpisode()">Eliminar</q-btn>
-            <q-btn color="blue-7" @click="closeDelete">Cancelar</q-btn>
+            <q-btn
+              class="q-px-md q-mx-md"
+              label="Limpiar Formulario"
+              color="negative"
+              @click="reset"
+            />
           </q-card-section>
         </q-card>
       </q-dialog>
@@ -125,6 +129,7 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
+import CustomDialog from "../components/CustomDialog.vue";
 
 export default {
   data() {
@@ -186,11 +191,13 @@ export default {
     ]),
     addEpisode() {
       this.add_episode({ ...this.episode });
+      this.episode.id = null;
+      this.episode.title = null;
+      this.episode.imgSrc = null;
+      this.episode.src = null;
+      this.episode.desc = null;
+      this.episode.season = null;
       this.dialog = false;
-    },
-    deleteEpisode() {
-      this.delete_episode(this.idDelete);
-      this.closeDelete();
     },
     triggerAdd() {
       this.dialog = true;
@@ -198,15 +205,33 @@ export default {
     triggerDelete(id) {
       console.log(id);
       this.idDelete = id;
-      this.dialogDelete = true;
+      this.$q
+        .dialog({
+          component: CustomDialog,
+          parent: this,
+          title: "Confirm",
+          message: "¿Estás seguro de que quieres borrar este episodio?",
+          cancel: true,
+          persistent: true,
+        })
+        .onOk(() => {
+          this.delete_episode(this.idDelete);
+        })
+        .onCancel(() => {
+          // console.log('>>>> Cancel')
+        });
     },
     triggerUpdate(id) {
       this.idEdit = id;
       this.$router.push({ path: `/edit/${this.idEdit}` });
     },
-
     reset() {
-      this.$refs.formAdd.reset();
+      this.episode.id = null;
+      this.episode.title = null;
+      this.episode.imgSrc = null;
+      this.episode.src = null;
+      this.episode.desc = null;
+      this.episode.season = null;
     },
     resetValidation() {
       this.$refs.formAdd.resetValidation();

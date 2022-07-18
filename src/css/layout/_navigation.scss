@@ -10,8 +10,7 @@
 }
 
 .navbtn {
-    font-family: "Jaapokki Regular";
-
+  font-family: "Jaapokki Regular";
 }
 
 .drawer {
@@ -25,4 +24,8 @@
 .footer {
   background: rgba(16, 16, 16, 0.3) !important;
   backdrop-filter: blur(8px);
+}
+
+.logoutIcon {
+  cursor: pointer;
 }

@@ -1,22 +1,17 @@
 <template>
   <q-page class="row justify-center q-mt-md">
     <div class="gt-md col-md-3 q-mr-md">
-      <img
-        id="group_Photo"
-        style="height: 80vh"
-        src="../assets/3 arbol logo.jpg"
-        alt="the_band"
-      />
+      <img id="group_Photo" src="../assets/3 arbol logo.jpg" alt="the_band" />
     </div>
 
-    <q-card class="my-card q-pa-xl col-md-4 card">
+    <q-card class="my-card q-pa-xl col-10 col-lg-4 card">
       <q-card-section>
         <div class="text-h4 q-pb-md text-white">Crea tu cuenta</div>
         <div class="text-subtitle1 text-grey-5">
           Para buscadores de la Verdad
         </div>
       </q-card-section>
-      <q-form v-model="valid" ref="formRegister">
+      <q-form v-model="valid" ref="formRegister" @reset="onReset">
         <q-card-section class="q-pt-none">
           <q-input
             color="secondary"
@@ -25,6 +20,19 @@
             outlined
             placeholder="Nombre"
             v-model="user.displayName"
+            required
+            :rules="[(val) => (val && val.length > 0) || 'Escribe algo...']"
+          >
+            <template v-slot:append> </template>
+          </q-input>
+
+          <q-input
+            color="secondary"
+            class="q-mb-md input"
+            dark
+            outlined
+            placeholder="Apellido"
+            v-model="user.lastName"
             required
             :rules="[(val) => (val && val.length > 0) || 'Escribe algo...']"
           >
@@ -102,6 +110,7 @@
             outlined
             placeholder="Confirma contraseña"
             v-model="user.confirmPassword"
+            v-on:keyup.enter="registerUser"
             required
             :type="isPwd ? 'password' : 'text'"
             :rules="[
@@ -138,7 +147,6 @@
             color="negative"
             type="reset"
             label="Reset"
-            @click="formReset"
           />
         </q-card-section>
         <q-card-section class="flex flex-center card_Subtitle q-pt-md">
@@ -159,6 +167,7 @@ import { mapActions } from "vuex";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
+import CustomDialog from "../components/CustomDialog.vue";
 
 export default {
   data() {
@@ -166,6 +175,7 @@ export default {
       valid: false,
       user: {
         displayName: "",
+        lastName: "",
         bio: "",
         id: "",
         photoURL: "",
@@ -193,23 +203,49 @@ export default {
         });
         await setDoc(doc(db, "users", auth.currentUser.uid), {
           displayName: this.user.displayName,
+          lastName: this.user.lastName,
           bio: this.user.bio,
           uid: auth.currentUser.uid,
           photoURL: this.user.photoURL,
           email: this.user.email,
         });
+        this.$q
+          .dialog({
+            component: CustomDialog,
+            parent: this,
+            title: "Alert",
+            message: "¡Cuenta creada correctamente!",
+          })
+          .onOk(() => {
+            // console.log('OK')
+          });
         this.$router.push({ name: "home" });
       } catch (error) {
         console.log(error.code);
         switch (error.code) {
           case "auth/email-already-in-use":
-            alert("El correo ya está siendo utilizado");
+            this.$q
+              .dialog({
+                component: CustomDialog,
+                parent: this,
+                title: "Alert",
+                message: "¡Este email ya está siendo utilizado!",
+              })
+              .onOk(() => {
+                // console.log('OK')
+              });
             break;
         }
       }
     },
-    formReset() {
-      this.$refs.formRegister.reset();
+    onReset() {
+      this.user.displayName = null;
+      this.user.lastName = null;
+      this.user.bio = null;
+      this.user.photoURL = null;
+      this.user.email = null;
+      this.user.password = null;
+      this.user.confirmPassword = null;
     },
   },
 };

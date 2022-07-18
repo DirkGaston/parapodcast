@@ -1,14 +1,15 @@
 <template>
-  <q-page class="flex justify-center q-mt-md adminPage">
-    <div class="row flex justify-center items-center">
-      <h3 class="display-3 mb-5 text-white">
-        Editando el episodio: {{ episodeData.name }}
-      </h3>
+  <q-page class="flex column justify-center adminPage">
+    <div class="column justify-center items-center editPageTitle">
+      <h3 class="display-3 text-white h31">Editando el episodio:</h3>
+      <h3 class="display-3 text-white h32">{{ episodeData.name }}</h3>
     </div>
-    <div class="row flex justify-center" style="width: 90vw">
-      <q-form ref="formAdd" v-model="valid" class="editTable">
+    <div class="row flex justify-center">
+      <q-form ref="formAdd" v-model="valid" class="custom-dialog">
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.id"
           label="Número de Episodio"
           lazy-rules
@@ -17,6 +18,8 @@
 
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.name"
           label="Título del Episodio"
           lazy-rules
@@ -25,6 +28,8 @@
 
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.desc"
           label="Descripción del Episodio"
           lazy-rules
@@ -33,6 +38,8 @@
 
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.imgSrc"
           label="URL de la imágen de portada"
           lazy-rules
@@ -41,6 +48,8 @@
 
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.src"
           label="Enlace de escucha del Episodio"
           lazy-rules
@@ -49,28 +58,23 @@
 
         <q-input
           filled
+          input-class="text-white"
+          label-color="white"
           v-model="episode.season"
           label="Temporada"
           lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Introduce algo']"
         />
-
-        <q-btn
-          class="q-mr-4"
-          color="positive"
-          :disabled="!valid"
-          @click="updateEpisode"
-        >
-          ACTUALIZAR EPISODIO</q-btn
-        >
-        <q-btn
-          class="q-mr-4"
-          color="negative"
-          :disabled="!valid"
-          @click="reset"
-        >
-          RESET</q-btn
-        >
+        <q-card-section class="flex row adminButtons justify-center">
+          <q-btn
+            class="q-mr-4"
+            color="positive"
+            :disabled="!valid"
+            @click="updateEpisode"
+          >
+            ACTUALIZAR EPISODIO</q-btn
+          >
+        </q-card-section>
       </q-form>
     </div>
   </q-page>
