@@ -77,25 +77,27 @@ export default {
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          console.log("Document data:", docSnap.data());
+          console.log("Document.data:", docSnap.data());
 
-          const episodeUpdate = { listened: true, id: this.$route.params.id };
+          const episodeUpdate = {
+            listened: true,
+            id: this.$route.params.id,
+            name: this.episodeData.name,
+            season: this.episodeData.season,
+          };
           let episodesUpdate;
 
-          // console.log("docSnap.data()", docSnap.data());
-
-          if (docSnap.data().episodes) {
-            const findEpisode = docSnap
-              .data()
-              .episodes.find((item) => item.id === this.$route.params.id);
+          const episodes = docSnap.data().episodes;
+          if (episodes && episodes.length) {
+            const findEpisode = episodes.find(
+              (item) => item.id === this.$route.params.id
+            );
             if (findEpisode) {
-              episodesUpdate = docSnap
-                .data()
-                .episodes.map((item) =>
-                  item.id === this.$route.params.id ? episodeUpdate : item
-                );
+              episodesUpdate = episodes.map((item) =>
+                item.id === this.$route.params.id ? episodeUpdate : item
+              );
             } else {
-              episodesUpdate.push(episodeUpdate);
+              episodesUpdate = [...episodes, episodeUpdate];
             }
           } else {
             episodesUpdate = [episodeUpdate];
@@ -106,7 +108,6 @@ export default {
           });
           console.log("db actualizada");
         } else {
-          // doc.data() will be undefined in this case
           console.log("No such document!");
         }
       } catch (error) {

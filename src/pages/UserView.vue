@@ -7,7 +7,19 @@
           Este es tu perfil en nuestro rincón del Misterio
         </div>
         <img class="col-5" :src="userData.photoURL" alt="" />
+        <p>{{ userData.bio }}</p>
       </q-card-section>
+
+      <div class="q-pa-md">
+        <q-table
+          title="Episodios Escuchados"
+          :data="userData.episodes"
+          :columns="columns"
+          row-key="name"
+          class="adminTable text-white"
+        >
+        </q-table>
+      </div>
 
       <q-card-section class="flex flex-center">
         <q-btn
@@ -31,6 +43,38 @@ export default {
   data() {
     return {
       user: null,
+      columns: [
+        {
+          name: "id",
+          required: true,
+          label: "Episodio",
+          align: "left",
+          field: (row) => row.id,
+          format: (val) => `${val}`,
+          sortable: true,
+        },
+        {
+          name: "name",
+          align: "center",
+          label: "Título",
+          field: "name",
+          sortable: true,
+        },
+        {
+          name: "rating",
+          align: "center",
+          label: "Puntuación",
+          field: "rating",
+          sortable: true,
+        },
+        {
+          name: "season",
+          align: "center",
+          label: "Temporada",
+          field: "season",
+          sortable: true,
+        },
+      ],
     };
   },
   beforeCreate() {
