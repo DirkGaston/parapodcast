@@ -21,7 +21,7 @@
               label="Administración"
               v-if="user"
           /></router-link>
-          <router-link style="text-decoration: none" to="`/news`"
+          <router-link style="text-decoration: none" to="/news"
             ><q-btn
               class="q-px-md q-mx-md transparent navBtn gt-sm"
               unelevated
@@ -30,7 +30,7 @@
               label="Noticias"
               v-if="user"
           /></router-link>
-          <router-link style="text-decoration: none" to="`/contact`">
+          <router-link style="text-decoration: none" to="/contact">
             <q-btn
               class="q-px-md q-mx-md transparent navBtn gt-sm"
               unelevated
@@ -42,7 +42,7 @@
 
           <q-space />
 
-          <router-link style="text-decoration: none" to="`/login`">
+          <router-link style="text-decoration: none" to="/login">
             <q-btn
               class="q-px-md q-mx-md transparent navBtn"
               unelevated
@@ -51,7 +51,7 @@
               label="Login"
               v-if="!user"
           /></router-link>
-          <router-link style="text-decoration: none" to="`/register`">
+          <router-link style="text-decoration: none" to="/register">
             <q-btn
               class="q-px-md q-mx-md transparent navBtn"
               unelevated
