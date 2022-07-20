@@ -58,7 +58,7 @@ quasar build
 
 Se ha ejecutado un test e2e utilizando **Cypress**
 ```bash
-yarn e2e:test
+yarn test:e2e
 ```
 El test cubre todas las funcionalidades del sitio, desde el registro de un usuario hasta las distintas operaciones que puede realizar el administrador.
 
