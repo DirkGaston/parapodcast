@@ -1,21 +1,41 @@
-# PARAPODCAST ACTIVITY
+# Parapodcast Activity
 
-Página web oficial del podcast Parapodcast Activity
+Sitio web oficial del podcast de comedia PARAPODCAST ACTIVITY.
 
-## Guía de Estilos
+[Enlace al sitio](https://parapodcast-activity.web.app)
 
-La paleta cromática del sitio es en base a los siguientes colores:
+![Parapodcast Activity](https://i.imgur.com/803OeHo.png)
 
-#101010
-#005ef3
-#c10015
 
-Las fuentes utilizadas son: Jaapokki Regular, Jaapokki Subtract y Space Mono.
+De momento el sitio se encuentra sólo accesible bajo registro de usuario, permite al usuario consultar toda la información relativa al podcast, con una guía de episodios y posibilidad de reproducirlos directamente. 
 
-Los botones del menú de navegación siempre serán transparentes, pasando a tener un fondo gris en estado "hover"
-y un fondo azul #005ef3 al estar activos (vista seleccionada).
+También se pueden marcar los episodios que se han escuchado y ordenar esa lista dentro del perfil de usuario. A futuro la idea es añadir funcionalidad para poder puntuarlos y poder dejar comentarios en sus respectivas páginas.
 
-## Install the dependencies
+Existe una página de administración en la que AÑADIR episodios y editar toda la información. Esta funcionalidad de momento permanece visible a todo usuario registrado, no obstante las reglas de seguridad de FIRESTORE designan a un usuario ADMINISTRADOR que es el único con permiso para realizar estas operaciones.
+
+Como pequeño valor añadido, el sitio está conectado a la API de la NASA para mostrar una imagen aleatoria de su base de datos cada día, indicando también la fecha.
+
+## Herramientas Empleadas 🛠️
+
+El proyecto ha sido creado en VUE y el framework de trabajo elegido en este caso ha sido QUASAR. Se ha hecho uso de las siguientes dependencias:
+
++ Quasar (framework UI)
++ Axios (consumo de API)
++ VUE Router (enrutamiento)
++ VUEX (administración de estado)
++ Vue Social Sharing (funcionalidad para compartir contenido en redes sociales)
++ VueJS Twitter Feed (embedding de la timeline del Twitter oficial del programa)
++ VueperSlides (carrusel personalizado)
++ Firestore (base de datos)
++ Firebase Hosting
++ Cypress (testing e2e)
+
+## Accesos de Administración
+
+**Correo**: dirkgaston87@gmail.com  
+**Password**: test123
+
+## Instalación de Dependencias 🚀
 
 ```bash
 yarn
@@ -23,20 +43,27 @@ yarn
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+## Levantar Servidor de Desarrollo
 
 ```bash
 quasar dev
 ```
 
-### Build the app for production
-
+## Realizar Build para Producción
 ```bash
 quasar build
 ```
 
-### Customize the configuration
+## Testing e2e
 
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+Se ha ejecutado un test e2e utilizando **Cypress**
+```bash
+yarn e2e:test
+```
+El test cubre todas las funcionalidades del sitio, desde el registro de un usuario hasta las distintas operaciones que puede realizar el administrador.
 
-# parapodcast
+## Autor ✒️
+[Dirk Gastón](https://github.com/dirkgaston)
+
+## Licencia
+[MIT](https://choosealicense.com/licenses/mit/)
