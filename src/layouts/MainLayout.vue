@@ -80,6 +80,7 @@
 
           <div class="lt-md">
             <q-btn
+              class="menuIcon"
               flat
               dense
               round

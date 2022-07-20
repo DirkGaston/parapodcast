@@ -108,7 +108,7 @@
           </q-card-section>
           <q-card-section class="flex row adminButtons justify-center">
             <q-btn
-              class="q-mx-md"
+              class="addEpisodeButton q-mx-md"
               :disabled="!valid"
               color="blue-7"
               @click="addEpisode"

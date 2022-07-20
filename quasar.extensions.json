@@ -3,5 +3,11 @@
     "options": [
       "scripts"
     ]
+  },
+  "@quasar/testing-unit-jest": {
+    "babel": "babelrc",
+    "options": [
+      "scripts"
+    ]
   }
 }

@@ -52,17 +52,65 @@
           @click="listenedEpisode"
         />
       </q-card-section>
+
+      <q-card-section class="flex flex-center column">
+        <h5 class="text-white">¡Comparte el episodio en tus redes!</h5>
+        <div class="row socialButtons">
+          <ShareNetwork
+            network="facebook"
+            :url="`https://parapodcast-activity.web.app/episode/${episodeData.id}`"
+            :title="`${episodeData.name}`"
+            :description="`${episodeData.desc}`"
+            quote="Siempre en busca de la Verdad con V de Verdad"
+            hashtags="parapodcast"
+            style="text-decoration: none"
+            class="q-px-md"
+          >
+            <q-icon
+              name="fa-brands fa-facebook"
+              size="xl"
+              style="color: #4267b2"
+            >
+            </q-icon>
+          </ShareNetwork>
+
+          <ShareNetwork
+            network="whatsapp"
+            :url="`https://parapodcast-activity.web.app/episode/${episodeData.id}`"
+            :title="`${episodeData.name}`"
+            :description="`${episodeData.desc}`"
+            quote="Siempre en busca de la Verdad con V de Verdad"
+            hashtags="parapodcast"
+            style="text-decoration: none"
+            class="q-px-md"
+          >
+            <q-icon
+              name="fa-brands fa-whatsapp"
+              size="xl"
+              style="color: #25d366"
+            >
+            </q-icon>
+          </ShareNetwork>
+          <ShareNetwork
+            network="twitter"
+            :url="`https://parapodcast-activity.web.app/episode/${episodeData.id}`"
+            :title="`${episodeData.name}`"
+            :description="`${episodeData.desc}`"
+            quote="Siempre en busca de la Verdad con V de Verdad"
+            hashtags="parapodcast"
+            style="text-decoration: none"
+            class="q-px-md"
+          >
+            <q-icon
+              name="fa-brands fa-twitter"
+              size="xl"
+              style="color: #1da1f2"
+            >
+            </q-icon>
+          </ShareNetwork>
+        </div>
+      </q-card-section>
     </q-card>
-    <ShareNetwork
-      network="facebook"
-      url="https://news.vuejs.org/issues/180"
-      title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-      description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-      quote="The hot reload is so fast it\'s near instant. - Evan You"
-      hashtags="vuejs,vite"
-    >
-      Share on Facebook
-    </ShareNetwork>
   </q-page>
 </template>
 
