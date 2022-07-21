@@ -30,6 +30,10 @@ El proyecto ha sido creado en VUE y el framework de trabajo elegido en este caso
 + Firebase Hosting
 + Cypress (testing e2e)
 
+## Guía de Estilos 🎨
+
+![StyleGuide](https://i.imgur.com/OwTk5Zw.png)
+
 ## Accesos de Administración
 
 **Correo**: dirkgaston87@gmail.com  
